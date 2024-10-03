@@ -7,7 +7,7 @@ import (
 )
 
 func NewDB() *sql.DB {
-	db, err := sql.Open("mysql", "root@tcp(localhost:3306)/belajar_golang_restful_api")
+	db, err := sql.Open("mysql", "root:Pokemon18*@tcp(localhost:3306)/golang_database_migrations")
 	helper.PanicIfError(err)
 
 	db.SetMaxIdleConns(5)
@@ -17,3 +17,7 @@ func NewDB() *sql.DB {
 
 	return db
 }
+
+// migrate create -ext sql -dir db/migrations create_table_category
+// migrate -database "mysql://root:Pokemon18*@tcp(localhost:3306)/golang_database_migrations" -path db/migrations up
+// migrate -database "mysql://root:Pokemon18*@tcp(localhost:3306)/golang_database_migrations" -path db/migrations down
